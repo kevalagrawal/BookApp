@@ -8,7 +8,9 @@ import {job} from "./lib/cron.js"
 
 const app = express();
 dotenv.config();
-app.use(express.json())
+app.use(express.json({ limit: "10mb" })); // Increase to 10MB
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
+
 app.use(cors())
 
 const PORT = process.env.PORT || 3000
